@@ -12,120 +12,138 @@
 
   <style>
     :root {
-      --bg: #f6f8fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --accent: #1d4ed8;
-      --border: #e5e7eb;
-    }
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #1d4ed8;
+  --border: #e5e7eb;
+}
 
-    * { box-sizing: border-box; }
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:
+    linear-gradient(180deg, #eef2f7 0%, #f6f8fb 40%);
+  color: var(--text);
+  line-height: 1.65;
+}
 
-    .container {
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 0 20px;
-    }
+.container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 48px;
-    }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 48px;
+}
 
-    header {
-      margin-bottom: 48px;
-    }
+header {
+  margin-bottom: 48px;
+}
 
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      margin: 0;
-      letter-spacing: -0.02em;
-    }
+/* ✅ HERO GOES HERE (GLOBAL) */
+.hero {
+  padding: 80px 32px;
+  margin-bottom: 40px;
+  background-image:
+    linear-gradient(
+      rgba(246,248,251,0.88),
+      rgba(246,248,251,0.96)
+    ),
+    url("/assets/img/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
 
-    .subtitle {
-      margin-top: 12px;
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 720px;
-    }
+h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
 
-    section {
-      margin-top: 48px;
-    }
+.subtitle {
+  margin-top: 12px;
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 720px;
+}
 
-    h2 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-      border-left: 3px solid var(--accent);
-      padding-left: 12px;
-    }
+section {
+  margin-top: 48px;
+}
 
-    p {
-      margin: 0 0 16px 0;
-    }
+h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+}
 
-    ul {
-      padding-left: 20px;
-      margin: 0;
-    }
+p {
+  margin: 0 0 16px 0;
+}
 
-    li {
-      margin-bottom: 10px;
-    }
+ul {
+  padding-left: 20px;
+  margin: 0;
+}
 
-    .two-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
+li {
+  margin-bottom: 10px;
+}
 
-    .callout {
-      background: #f1f5f9;
-      border-radius: 8px;
-      padding: 24px;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
+.callout {
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 24px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
 
-    footer {
-      margin-top: 56px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+a:hover {
+  text-decoration: underline;
+}
 
-    @media (max-width: 700px) {
-      .card { padding: 32px; }
-      .two-column { grid-template-columns: 1fr; }
-    }
+footer {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ✅ MEDIA QUERY ONLY HANDLES LAYOUT CHANGES */
+@media (max-width: 700px) {
+  .card { padding: 32px; }
+  .two-column { grid-template-columns: 1fr; }
+}
+
   </style>
 </head>
 <body>
@@ -133,13 +151,14 @@
   <div class="container">
     <div class="card">
 
-      <header>
+      <header class="hero">
         <h1>StunsSC LLC</h1>
         <p class="subtitle">
           Independent IT advisory and technology solutions for organizations
           that value clarity, security, and long-term operational stability.
         </p>
       </header>
+
 
       <section>
         <h2>What We Do</h2>
