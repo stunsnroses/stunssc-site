@@ -14,9 +14,10 @@
     :root {
   --bg: #f6f8fb;
   --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --accent: #1d4ed8;
+  --text: #e5e7eb;
+  --text-dark: #111827;
+  --muted: #9ca3af;
+  --accent: #60a5fa;
   --border: #e5e7eb;
 }
 
@@ -25,11 +26,11 @@
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background:
-    linear-gradient(180deg, #eef2f7 0%, #f6f8fb 40%);
+  background-color: #0f172a;
   color: var(--text);
   line-height: 1.65;
 }
+
 
 .container {
   max-width: 900px;
@@ -38,11 +39,19 @@ body {
 }
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-radius: 14px;
   padding: 48px;
+
+  /* Glass edge + depth */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
+
 
 header {
   margin-bottom: 48px;
@@ -57,6 +66,13 @@ header {
   border-radius: 10px;
 }
 
+.hero h1 {
+  color: #0f172a;   /* deep slate / charcoal */
+}
+
+.hero .subtitle {
+  color: #374151;   /* softer dark gray */
+}
 
 h1 {
   font-size: 2.2rem;
