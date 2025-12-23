@@ -4,59 +4,160 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StunsSC LLC</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      color: #222;
     }
+
+    .container {
+      max-width: 760px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 40px;
+      border: 1px solid var(--border);
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
     h1 {
-      margin-bottom: 0;
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
+
+    .tagline {
+      margin-top: 8px;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    section {
+      margin-top: 32px;
+    }
+
     h2 {
-      margin-top: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      border-left: 3px solid var(--accent);
+      padding-left: 10px;
     }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #666;
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 28px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>StunsSC LLC</h1>
-  <p><strong>IT Consulting & Technology Services</strong></p>
+  <div class="container">
+    <div class="card">
 
-  <h2>About</h2>
-  <p>
-    StunsSC LLC provides practical IT consulting, cybersecurity guidance,
-    and technology solutions for small and mid-sized organizations.
-    Our focus is on secure, scalable systems that improve reliability
-    without unnecessary complexity.
-  </p>
+      <header>
+        <h1>StunsSC LLC</h1>
+        <div class="tagline">IT Consulting & Technology Services</div>
+      </header>
 
-  <h2>Services</h2>
-  <ul>
-    <li>IT consulting & systems design</li>
-    <li>Cybersecurity assessments & hardening</li>
-    <li>Cloud & identity management</li>
-    <li>Network architecture & optimization</li>
-    <li>Technology vendor advisory</li>
-  </ul>
+      <section>
+        <h2>About</h2>
+        <p>
+          StunsSC LLC provides practical IT consulting, cybersecurity guidance,
+          and technology solutions for small and mid-sized organizations.
+          We focus on secure, scalable systems that improve reliability without
+          unnecessary complexity.
+        </p>
+      </section>
 
-  <h2>Contact</h2>
-  <p>
-    Email: <a href="mailto:info@stunssc.com">info@stunssc.com</a><br />
-    United States
-  </p>
+      <section>
+        <h2>Services</h2>
+        <ul>
+          <li>IT consulting & systems design</li>
+          <li>Cybersecurity assessments & hardening</li>
+          <li>Cloud & identity management</li>
+          <li>Network architecture & optimization</li>
+          <li>Technology vendor advisory</li>
+        </ul>
+      </section>
 
-  <footer>
-    © 2025 StunsSC LLC
-  </footer>
+      <section>
+        <h2>Contact</h2>
+        <p>
+          Email: <a href="mailto:info@stunssc.org">info@stunssc.org</a><br />
+          United States
+        </p>
+      </section>
+
+      <footer>
+        <div>© 2025 StunsSC LLC</div>
+        <div>Vendor-neutral • Privacy-focused</div>
+      </footer>
+
+    </div>
+  </div>
 
 </body>
 </html>
