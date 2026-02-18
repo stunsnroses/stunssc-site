@@ -8,245 +8,392 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-  --bg: #f6f8fb;
-  --card: #ffffff;
-  --text: #e5e7eb;
-  --text-dark: #111827;
-  --muted: #9ca3af;
-  --accent: #60a5fa;
-  --border: #e5e7eb;
-}
+      --bg: #030712;
+      --card-bg: rgba(17, 24, 39, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.5);
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --nav-bg: rgba(3, 7, 18, 0.8);
+    }
 
-* { box-sizing: border-box; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #0f172a;
-  color: var(--text);
-  line-height: 1.65;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-.container {
-  max-width: 900px;
-  margin: 80px auto;
-  padding: 0 20px;
-}
+    /* --- Background Elements --- */
+    .bg-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% -20%, #1e293b 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
 
-.card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border-radius: 14px;
-  padding: 48px;
+    /* --- Navigation --- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 1rem 0;
+    }
 
-  /* Glass edge + depth */
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-}
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
 
-header {
-  margin-bottom: 48px;
-}
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 32px;
+      transition: color 0.2s ease;
+    }
 
-.hero {
-  padding: 80px 32px;
-  margin-bottom: 40px;
-  background-image: url("assets/img/hero-bg.png");
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-}
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
-.hero h1 {
-  color: #0f172a;   /* deep slate / charcoal */
-}
+    /* --- Hero Section --- */
+    .hero {
+      position: relative;
+      padding: 160px 24px 100px;
+      text-align: center;
+      background: url("assets/img/hero-bg.png") center/cover no-repeat;
+      overflow: hidden;
+    }
 
-.hero .subtitle {
-  color: #374151;   /* softer dark gray */
-}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom, rgba(3, 7, 18, 0.4), var(--bg));
+      z-index: 1;
+    }
 
-h1 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  margin: 0;
-  letter-spacing: -0.02em;
-}
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-.subtitle {
-  margin-top: 12px;
-  font-size: 1.15rem;
-  color: var(--muted);
-  max-width: 720px;
-}
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      background: linear-gradient(to bottom right, #fff 30%, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-section {
-  margin-top: 48px;
-}
+    .hero p {
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
 
-h2 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 16px;
-  border-left: 3px solid var(--accent);
-  padding-left: 12px;
-}
+    /* --- Sections --- */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
 
-p {
-  margin: 0 0 16px 0;
-}
+    .section-header {
+      margin-bottom: 48px;
+    }
 
-ul {
-  padding-left: 20px;
-  margin: 0;
-}
+    h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
 
-li {
-  margin-bottom: 10px;
-}
+    .section-tag {
+      display: inline-block;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
 
-.two-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
 
-.callout {
-  background: #f1f5f9;
-  border-radius: 8px;
-  padding: 24px;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
+    /* --- Modern Cards --- */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 500;
-}
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
 
-a:hover {
-  text-decoration: underline;
-}
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-footer {
-  margin-top: 56px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-  font-size: 0.85rem;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
+    .card-icon {
+      color: var(--accent);
+      flex-shrink: 0;
+    }
 
-/* ✅ MEDIA QUERY ONLY HANDLES LAYOUT CHANGES */
-@media (max-width: 700px) {
-  .card { padding: 32px; }
-  .two-column { grid-template-columns: 1fr; }
-}
+    .card ul {
+      list-style: none;
+    }
 
+    .card li {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    .card li::before {
+      content: "→";
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* --- Callout --- */
+    .callout {
+      margin-top: 60px;
+      background: linear-gradient(to right, rgba(59, 130, 246, 0.1), transparent);
+      border-left: 2px solid var(--accent);
+      padding: 32px;
+      border-radius: 0 16px 16px 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    /* --- Contact --- */
+    #contact {
+      background: rgba(17, 24, 39, 0.3);
+      border-radius: 32px;
+      padding: 80px 40px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      box-shadow: 0 10px 20px -10px var(--accent-glow);
+    }
+
+    .btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 30px -10px var(--accent-glow);
+    }
+
+    /* --- Footer --- */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .footer-content { justify-content: center; text-align: center; }
+      .nav-links { display: none; }
+      .hero { padding-top: 120px; }
+      .card { padding: 30px; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="card">
+  <div class="bg-glow"></div>
 
-      <header class="hero">
-        <h1>StunsSC LLC</h1>
-        <p class="subtitle">
-          Independent IT advisory and technology solutions for organizations
-          that value clarity, security, and long-term operational stability.
-        </p>
-      </header>
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">StunsSC</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Technology Strategy, Simplified.</h1>
+      <p>
+        Independent IT advisory and technology solutions for organizations
+        that value clarity, security, and long-term operational stability.
+      </p>
+      <a href="#contact" class="btn">Start a Conversation</a>
+    </div>
+  </header>
 
-      <section>
-        <h2>What We Do</h2>
-        <p>
-          StunsSC LLC provides technology advisory, consulting, and implementation
-          support for small and mid-sized organizations navigating complex IT and
-          security decisions.
-        </p>
-        <p>
+  <main class="container">
+    
+    <section id="about" style="margin-bottom: 120px;">
+      <div class="section-header">
+        <span class="section-tag">Independence First</span>
+        <h2>Integrity-Driven Advisory</h2>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+        <p style="font-size: 1.15rem; color: var(--text-secondary);">
+          StunsSC LLC provides technology advisory and implementation
+          support for organizations navigating complex IT and security decisions.
           We work with leadership and technical teams to design systems that are
-          secure, scalable, and aligned with real operational needs — not vendor
-          incentives or unnecessary complexity.
+          secure, scalable, and aligned with real operational needs.
         </p>
-      </section>
-
-      <section>
-        <h2>Our Approach</h2>
-        <p>
+        <p style="font-size: 1.15rem; color: var(--text-secondary);">
           Our approach is advisory-first. We focus on understanding business
           objectives, risk tolerance, and operational constraints before
-          recommending technology or services.
+          recommending technology or services. No vendor pressure, just fit.
         </p>
-        <p>
-          When solutions are required, we assist with vendor evaluation,
-          architecture validation, and implementation oversight to ensure
-          decisions are based on fit, not pressure.
-        </p>
-      </section>
+      </div>
+    </section>
 
-      <section class="two-column">
-        <div>
-          <h2>Advisory & Consulting</h2>
+    <section id="services">
+      <div class="section-header">
+        <span class="section-tag">Capabilities</span>
+        <h2>Strategic Solutions</h2>
+      </div>
+
+      <div class="grid">
+        <!-- Advisory Card -->
+        <div class="card">
+          <h3>
+            <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Advisory & Consulting
+          </h3>
           <ul>
             <li>IT architecture & systems design</li>
-            <li>Cybersecurity posture assessment & hardening</li>
+            <li>Cybersecurity posture assessment</li>
             <li>Cloud identity & access strategy</li>
             <li>Network design & optimization</li>
             <li>Technical due diligence & risk review</li>
           </ul>
         </div>
 
-        <div>
-          <h2>Technology Solutions</h2>
+        <!-- Technology Card -->
+        <div class="card">
+          <h3>
+            <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            Technology Solutions
+          </h3>
           <ul>
             <li>Connectivity, SD-WAN & network services</li>
             <li>Security & risk management platforms</li>
             <li>Cloud & infrastructure services</li>
-            <li>Communications & collaboration solutions</li>
-            <li>Managed & co-managed service offerings</li>
+            <li>Communications & collaboration</li>
+            <li>Managed & co-managed offerings</li>
           </ul>
         </div>
-      </section>
+      </div>
 
-      <section>
-        <div class="callout">
-          Technology solutions are sourced through established national partner
-          networks, allowing access to vetted providers, competitive pricing,
-          and long-term support options — while maintaining an independent,
-          outcome-focused advisory posture.
-        </div>
-      </section>
+      <div class="callout">
+        <strong>Vendor Independence:</strong> Technology solutions are sourced through established national partner
+        networks, allowing access to vetted providers and competitive pricing — while maintaining an independent,
+        outcome-focused advisory posture.
+      </div>
+    </section>
 
-      <section>
-        <h2>Contact</h2>
-        <p>
-          Email: <a href="mailto:info@stunssc.org">info@stunssc.org</a><br />
-          United States
-        </p>
-      </section>
+    <section id="contact" style="margin-top: 120px;">
+      <span class="section-tag">Connect</span>
+      <h2 style="font-size: 2.5rem; margin-bottom: 24px;">Ready to optimize?</h2>
+      <p style="margin-bottom: 32px; color: var(--text-secondary);">Let's discuss how we can bring clarity to your technology stack.</p>
+      <a href="mailto:info@stunssc.org" class="btn">info@stunssc.org</a>
+      <p style="margin-top: 24px; font-size: 0.9rem; color: var(--text-secondary);">Located in the United States</p>
+    </section>
 
-      <footer>
-        <div>© 2025 StunsSC LLC</div>
-        <div>Independent advisory • Vendor-neutral recommendations</div>
-      </footer>
+  </main>
 
+  <footer>
+    <div class="footer-content">
+      <div>© 2026 StunsSC LLC. All rights reserved.</div>
+      <div style="color: var(--accent); font-weight: 500;">Independent advisory • Vendor-neutral</div>
     </div>
-  </div>
+  </footer>
 
 </body>
 </html>
